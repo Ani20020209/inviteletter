@@ -1,1271 +1,828 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Անի & Նշան | Հարսանիք</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap');
-        
-        :root {
-            --gold: #d4af37; --gold-light: #f4e4bc; --rose: #e8b4b8;
-            --dark: #1a1a2e; --glass: rgba(255,255,255,0.12);
-            --glass-border: rgba(255,255,255,0.25);
-            --transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-        }
-        
-        * { margin:0; padding:0; box-sizing:border-box; }
-        
-        body {
-            font-family: 'Montserrat', sans-serif; color: #fff;
-            overflow-x: hidden; background: var(--dark);
-            line-height: 1.6;
-        }
-        
-        /* Unique Background for This Page */
-        .page-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://raw.githubusercontent.com/Ani20020209/inviteletter/main/WhatsApp%20Image%202026-04-10%20at%2000.24.27.jpeg') center/cover fixed;
-            z-index: -2; transition: transform 0.5s ease;
-        }
-        .page-bg::after {
-            content:''; position:absolute; top:0; left:0; width:100%; height:100%;
-            background: linear-gradient(135deg, rgba(26,26,46,0.88) 0%, rgba(45,38,75,0.82) 100%);
-            z-index: -1;
-        }
-        
-        /* Floating Particles */
-        .particles { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:-1; overflow:hidden; }
-        .particle {
-            position:absolute; width:3px; height:3px; background:var(--gold);
-            border-radius:50%; opacity:0.7; animation: float 18s infinite linear;
-        }
-        @keyframes float {
-            0% { transform:translateY(100vh) rotate(0deg); opacity:0; }
-            15% { opacity:0.9; } 85% { opacity:0.9; }
-            100% { transform:translateY(-100px) rotate(720deg); opacity:0; }
-        }
-        
-        /* Glass Cards with Hover Shine */
-        .glass-card {
-            background: var(--glass); backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px); border:1px solid var(--glass-border);
-            border-radius: 28px; padding: 45px 40px;
-            box-shadow: 0 12px 45px rgba(0,0,0,0.35);
-            transition: var(--transition); position: relative; overflow: hidden;
-        }
-        .glass-card::before {
-            content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.7s ease;
-        }
-        .glass-card:hover::before { left: 100%; }
-        .glass-card:hover {
-            transform: translateY(-10px) scale(1.015);
-            border-color: var(--gold);
-            box-shadow: 0 25px 60px rgba(212,175,55,0.35);
-        }
-        
-        /* Elegant Typography */
-        .font-script { font-family: 'Great Vibes', cursive; }
-        .font-elegant { font-family: 'Cormorant Garamond', serif; }
-        
-        .names-hero {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(3.5rem, 9vw, 7rem);
-            background: linear-gradient(135deg, #fff 0%, var(--gold-light) 45%, #fff 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; text-shadow: 0 6px 25px rgba(0,0,0,0.35);
-            animation: shimmer 4s infinite;
-            line-height: 1.1;
-        }
-        @keyframes shimmer {
-            0%, 100% { background-position: -200% 0; }
-            50% { background-position: 200% 0; }
-        }
-        
-        /* Modern Navigation */
-        .nav-modern {
-            position: fixed; top: 0; width: 100%; padding: 18px 45px;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; background: rgba(26,26,46,0.85);
-            backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border);
-        }
-        .nav-logo {
-            font-family: 'Great Vibes', cursive; font-size: 2rem;
-            color: var(--gold); text-decoration: none; letter-spacing: 2px;
-        }
-        .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a {
-            color: #fff; text-decoration: none; font-weight: 400;
-            letter-spacing: 1.5px; position: relative; padding: 8px 0;
-            transition: var(--transition); font-size: 0.95rem;
-        }
-        .nav-links a::after {
-            content:''; position:absolute; bottom:0; left:0; width:0; height:2px;
-            background: var(--gold); transition: var(--transition);
-        }
-        .nav-links a:hover { color: var(--gold); transform: translateY(-2px); }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a.active { color: var(--gold); }
-        .nav-links a.active::after { width: 100%; }
-        
-        /* Elegant Buttons */
-        .btn-modern {
-            display: inline-flex; align-items: center; gap: 12px;
-            padding: 18px 48px; background: linear-gradient(135deg, var(--gold) 0%, #b8962e 100%);
-            color: var(--dark); text-decoration: none; border-radius: 55px;
-            font-weight: 500; letter-spacing: 2px; border: none; cursor: pointer;
-            transition: var(--transition); box-shadow: 0 12px 35px rgba(212,175,55,0.45);
-            position: relative; overflow: hidden; font-size: 1.05rem;
-        }
-        .btn-modern::before {
-            content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-            transition: left 0.6s ease;
-        }
-        .btn-modern:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 20px 50px rgba(212,175,55,0.65);
-        }
-        .btn-modern:hover::before { left: 100%; }
-        .btn-outline {
-            background: transparent; border: 2.5px solid var(--gold); color: var(--gold);
-        }
-        .btn-outline:hover { background: var(--gold); color: var(--dark); }
-        
-        /* Countdown with Hover Scale */
-        .countdown-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
-            gap: 22px; margin-top: 35px;
-        }
-        .countdown-item {
-            text-align: center; padding: 28px 18px;
-            background: rgba(255,255,255,0.09); border-radius: 22px;
-            border: 1px solid var(--glass-border); transition: var(--transition);
-            cursor: default;
-        }
-        .countdown-item:hover {
-            background: rgba(212,175,55,0.18); transform: scale(1.12) translateY(-3px);
-            border-color: var(--gold); box-shadow: 0 10px 30px rgba(212,175,55,0.25);
-        }
-        .countdown-number {
-            font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5.5vw, 4rem);
-            font-weight: 600; display: block; color: var(--gold-light);
-            text-shadow: 0 3px 15px rgba(0,0,0,0.3);
-        }
-        .countdown-label {
-            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px;
-            color: rgba(255,255,255,0.85); margin-top: 8px; font-weight: 500;
-        }
-        
-        /* Container & Layout */
-        .container {
-            max-width: 1150px; margin: 0 auto; padding: 130px 35px 70px;
-            min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; text-align: center;
-        }
-        .section-title {
-            font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4.5vw, 3.3rem);
-            margin-bottom: 45px; color: var(--gold-light); position: relative;
-            display: inline-block; font-weight: 600;
-        }
-        .section-title::after {
-            content: '✦'; display: block; font-size: 1.8rem;
-            color: var(--gold); margin-top: 18px; animation: pulse 2s infinite;
-        }
-        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
-        
-        /* Footer */
-        .footer-modern {
-            margin-top: auto; padding: 45px 25px; text-align: center;
-            font-family: 'Great Vibes', cursive; font-size: 1.5rem;
-            color: rgba(255,255,255,0.9);
-        }
-        .footer-modern a { color: var(--gold); text-decoration: none; transition: var(--transition); }
-        .footer-modern a:hover { color: #fff; text-shadow: 0 0 15px var(--gold); }
-        
-        /* Animations */
-        @keyframes fadeInUp { from { opacity:0; transform:translateY(50px); } to { opacity:1; transform:translateY(0); } }
-        .animate-fade-in { animation: fadeInUp 0.9s ease forwards; }
-        .animate-fade-in.delay-1 { animation-delay: 0.25s; }
-        .animate-fade-in.delay-2 { animation-delay: 0.5s; }
-        .animate-fade-in.delay-3 { animation-delay: 0.75s; }
-        
-        /* Responsive */
-        @media (max-width: 900px) {
-            .nav-modern { padding: 16px 25px; flex-wrap: wrap; }
-            .nav-links { gap: 20px; font-size: 0.85rem; width: 100%; justify-content: center; margin-top: 18px; }
-            .glass-card { padding: 35px 28px; }
-            .countdown-grid { grid-template-columns: repeat(2, 1fr); }
-            .btn-modern { padding: 16px 40px; font-size: 1rem; }
-        }
-        @media (max-width: 600px) {
-            .names-hero { font-size: clamp(2.8rem, 10vw, 5rem); }
-            .countdown-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .countdown-item { padding: 22px 12px; }
-            .countdown-number { font-size: clamp(1.8rem, 6vw, 3rem); }
-        }
-    </style>
-</head>
-<body>
-    <div class="page-bg" id="pageBg"></div>
-    <div class="particles" id="particles"></div>
-
-    <nav class="nav-modern">
-        <a href="index.html" class="nav-logo">Ա & Ն</a>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Գլխավոր</a></li>
-            <li><a href="timeline.html">Ծրագիր</a></li>
-            <li><a href="calendar.html">Օրացույց</a></li>
-            <li><a href="congratulations.html">Շնորհավորանք</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <h1 class="names-hero animate-fade-in">Անի <span style="color:var(--gold); margin:0 20px">&</span> Նշան</h1>
-        <p class="font-elegant animate-fade-in delay-1" style="font-size:1.5rem; margin:30px 0; color:var(--gold-light); max-width:700px; margin-left:auto; margin-right:auto">
-            Սիրով հրավիրում ենք Ձեզ կիսել մեր երջանիկ օրը
-        </p>
-        <div class="wedding-date font-elegant animate-fade-in delay-2" style="font-size:2.1rem; letter-spacing:5px; margin:35px 0; padding:22px 35px; border-top:2px solid var(--glass-border); border-bottom:2px solid var(--glass-border); display:inline-block; background:rgba(255,255,255,0.08); border-radius:15px">
-            19 ՀՈՒՆԻՍ, 2027
-        </div>
-
-        <div class="glass-card animate-fade-in delay-3" style="margin:55px auto; max-width:750px">
-            <h3 class="section-title">Մինչև մեր հարսանիքը</h3>
-            <div class="countdown-grid" id="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">000</span>
-                    <span class="countdown-label">Օր</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Ժամ</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Րոպե</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Վայրկյան</span>
-                </div>
-            </div>
-        </div>
-
-        <div style="display:flex; gap:25px; justify-content:center; flex-wrap:wrap; margin-top:50px">
-            <a href="timeline.html" class="btn-modern"><span>Տեսնել Ծրագիրը</span> ✨</a>
-            <a href="congratulations.html" class="btn-modern btn-outline">♥ Շնորհավորել</a>
-        </div>
-
-        <footer class="footer-modern">
-            Սպասում ենք Ձեզ • Սիրով՝ Անի & Նշան 💍
-        </footer>
-    </div>
-
-    <script>
-        // Create floating golden particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            if (!container) return;
-            for (let i = 0; i < 50; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.animationDelay = Math.random() * 18 + 's';
-                p.style.animationDuration = (18 + Math.random() * 12) + 's';
-                p.style.width = (2 + Math.random() * 4) + 'px';
-                p.style.height = p.style.width;
-                container.appendChild(p);
-            }
-        }
-
-        // Live countdown to wedding
-        function updateCountdown() {
-            const weddingDate = new Date('June 19, 2027 12:30:00').getTime();
-            function tick() {
-                const now = new Date().getTime();
-                const distance = weddingDate - now;
-                if (distance < 0) {
-                    document.getElementById('days').textContent = '000';
-                    document.getElementById('hours').textContent = '00';
-                    document.getElementById('minutes').textContent = '00';
-                    document.getElementById('seconds').textContent = '00';
-                    return;
-                }
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById('days').textContent = String(days).padStart(3, '0');
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            }
-            tick();
-            setInterval(tick, 1000);
-        }
-
-        // Subtle parallax on scroll
-        function initParallax() {
-            window.addEventListener('scroll', () => {
-                const bg = document.getElementById('pageBg');
-                if (bg) bg.style.transform = `translateY(${window.pageYOffset * 0.25}px)`;
-            }, { passive: true });
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            updateCountdown();
-            initParallax();
-            
-            // Staggered card animations
-            document.querySelectorAll('.glass-card').forEach((card, i) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(40px)';
-                card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 400 + i * 180);
-            });
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="hy">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ծրագիր | Անի & Նշան</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap');
-        
-        :root {
-            --gold: #d4af37; --gold-light: #f4e4bc; --rose: #e8b4b8;
-            --dark: #1a1a2e; --glass: rgba(255,255,255,0.12);
-            --glass-border: rgba(255,255,255,0.25);
-            --transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-        }
-        
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            font-family: 'Montserrat', sans-serif; color: #fff;
-            overflow-x: hidden; background: var(--dark); line-height: 1.6;
-        }
-        
-        .page-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://raw.githubusercontent.com/Ani20020209/inviteletter/main/WhatsApp%20Image%202026-04-10%20at%2000.24.27%20(1).jpeg') center/cover fixed;
-            z-index: -2; transition: transform 0.5s ease;
-        }
-        .page-bg::after {
-            content:''; position:absolute; top:0; left:0; width:100%; height:100%;
-            background: linear-gradient(135deg, rgba(26,26,46,0.88) 0%, rgba(45,38,75,0.82) 100%);
-            z-index: -1;
-        }
-        
-        .particles { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:-1; overflow:hidden; }
-        .particle {
-            position:absolute; width:3px; height:3px; background:var(--gold);
-            border-radius:50%; opacity:0.7; animation: float 18s infinite linear;
-        }
-        @keyframes float {
-            0% { transform:translateY(100vh) rotate(0deg); opacity:0; }
-            15% { opacity:0.9; } 85% { opacity:0.9; }
-            100% { transform:translateY(-100px) rotate(720deg); opacity:0; }
-        }
-        
-        .glass-card {
-            background: var(--glass); backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px); border:1px solid var(--glass-border);
-            border-radius: 28px; padding: 45px 40px;
-            box-shadow: 0 12px 45px rgba(0,0,0,0.35);
-            transition: var(--transition); position: relative; overflow: hidden;
-        }
-        .glass-card::before {
-            content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.7s ease;
-        }
-        .glass-card:hover::before { left: 100%; }
-        .glass-card:hover {
-            transform: translateY(-10px) scale(1.015);
-            border-color: var(--gold);
-            box-shadow: 0 25px 60px rgba(212,175,55,0.35);
-        }
-        
-        .font-script { font-family: 'Great Vibes', cursive; }
-        .font-elegant { font-family: 'Cormorant Garamond', serif; }
-        
-        .names-hero {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(3rem, 7vw, 5rem);
-            background: linear-gradient(135deg, #fff 0%, var(--gold-light) 45%, #fff 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; text-shadow: 0 6px 25px rgba(0,0,0,0.35);
-        }
-        
-        .nav-modern {
-            position: fixed; top: 0; width: 100%; padding: 18px 45px;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; background: rgba(26,26,46,0.85);
-            backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border);
-        }
-        .nav-logo {
-            font-family: 'Great Vibes', cursive; font-size: 2rem;
-            color: var(--gold); text-decoration: none; letter-spacing: 2px;
-        }
-        .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a {
-            color: #fff; text-decoration: none; font-weight: 400;
-            letter-spacing: 1.5px; position: relative; padding: 8px 0;
-            transition: var(--transition); font-size: 0.95rem;
-        }
-        .nav-links a::after {
-            content:''; position:absolute; bottom:0; left:0; width:0; height:2px;
-            background: var(--gold); transition: var(--transition);
-        }
-        .nav-links a:hover { color: var(--gold); transform: translateY(-2px); }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a.active { color: var(--gold); }
-        .nav-links a.active::after { width: 100%; }
-        
-        .btn-modern {
-            display: inline-flex; align-items: center; gap: 12px;
-            padding: 18px 48px; background: linear-gradient(135deg, var(--gold) 0%, #b8962e 100%);
-            color: var(--dark); text-decoration: none; border-radius: 55px;
-            font-weight: 500; letter-spacing: 2px; border: none; cursor: pointer;
-            transition: var(--transition); box-shadow: 0 12px 35px rgba(212,175,55,0.45);
-            position: relative; overflow: hidden; font-size: 1.05rem;
-        }
-        .btn-modern::before {
-            content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-            transition: left 0.6s ease;
-        }
-        .btn-modern:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 20px 50px rgba(212,175,55,0.65);
-        }
-        .btn-modern:hover::before { left: 100%; }
-        
-        /* Animated Timeline */
-        .timeline-modern {
-            position: relative; max-width: 750px; margin: 0 auto; padding: 30px 0;
-        }
-        .timeline-modern::before {
-            content: ''; position: absolute; left: 50%; transform: translateX(-50%);
-            width: 3px; height: 100%; background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-            box-shadow: 0 0 20px rgba(212,175,55,0.4);
-        }
-        .timeline-item {
-            position: relative; width: 50%; padding: 0 55px 50px;
-            opacity: 0; transform: translateY(40px); transition: var(--transition);
-        }
-        .timeline-item.visible { opacity: 1; transform: translateY(0); }
-        .timeline-item:nth-child(odd) { left: 0; text-align: right; }
-        .timeline-item:nth-child(even) { left: 50%; text-align: left; }
-        .timeline-item:hover { transform: translateX(15px) !important; }
-        .timeline-item:nth-child(even):hover { transform: translateX(-15px) !important; }
-        
-        .timeline-dot {
-            position: absolute; width: 28px; height: 28px; background: var(--gold);
-            border-radius: 50%; top: 15px; border: 5px solid #fff;
-            box-shadow: 0 0 25px rgba(212,175,55,0.9), 0 0 45px rgba(212,175,55,0.5);
-            transition: var(--transition); z-index: 3; cursor: pointer;
-        }
-        .timeline-item:hover .timeline-dot {
-            transform: scale(1.5) rotate(15deg); background: #fff;
-            box-shadow: 0 0 35px rgba(255,255,255,0.95);
-        }
-        .timeline-item:nth-child(odd) .timeline-dot { right: -14px; }
-        .timeline-item:nth-child(even) .timeline-dot { left: -14px; }
-        
-        .timeline-time {
-            font-family: 'Cormorant Garamond', serif; font-size: 2rem;
-            font-weight: 600; color: var(--gold-light); margin-bottom: 10px;
-            text-shadow: 0 3px 15px rgba(0,0,0,0.3);
-        }
-        .timeline-event { font-size: 1.5rem; font-weight: 500; margin-bottom: 8px; }
-        .timeline-address {
-            font-size: 1.05rem; color: rgba(255,255,255,0.9); font-style: italic;
-            display: flex; align-items: center; justify-content: flex-end; gap: 8px;
-        }
-        .timeline-item:nth-child(even) .timeline-address {
-            justify-content: flex-start;
-        }
-        
-        .container {
-            max-width: 1150px; margin: 0 auto; padding: 130px 35px 70px;
-            min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; text-align: center;
-        }
-        .section-title {
-            font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4.5vw, 3.3rem);
-            margin-bottom: 45px; color: var(--gold-light); position: relative;
-            display: inline-block; font-weight: 600;
-        }
-        .section-title::after {
-            content: '✦'; display: block; font-size: 1.8rem;
-            color: var(--gold); margin-top: 18px; animation: pulse 2s infinite;
-        }
-        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
-        
-        .footer-modern {
-            margin-top: auto; padding: 45px 25px; text-align: center;
-            font-family: 'Great Vibes', cursive; font-size: 1.5rem;
-            color: rgba(255,255,255,0.9);
-        }
-        .footer-modern a { color: var(--gold); text-decoration: none; transition: var(--transition); }
-        .footer-modern a:hover { color: #fff; text-shadow: 0 0 15px var(--gold); }
-        
-        @keyframes fadeInUp { from { opacity:0; transform:translateY(50px); } to { opacity:1; transform:translateY(0); } }
-        .animate-fade-in { animation: fadeInUp 0.9s ease forwards; }
-        .animate-fade-in.delay-1 { animation-delay: 0.25s; }
-        .animate-fade-in.delay-2 { animation-delay: 0.5s; }
-        
-        @media (max-width: 900px) {
-            .timeline-modern::before { left: 35px; }
-            .timeline-item { width: 100%; left: 0 !important; padding-left: 90px !important; text-align: left !important; }
-            .timeline-dot { left: 25px !important; right: auto !important; }
-            .timeline-address { justify-content: flex-start !important; }
-            .nav-modern { padding: 16px 25px; flex-wrap: wrap; }
-            .nav-links { gap: 20px; font-size: 0.85rem; width: 100%; justify-content: center; margin-top: 18px; }
-            .glass-card { padding: 35px 28px; }
-        }
-        @media (max-width: 600px) {
-            .names-hero { font-size: clamp(2.5rem, 9vw, 4rem); }
-            .timeline-time { font-size: 1.7rem; }
-            .timeline-event { font-size: 1.3rem; }
-        }
-    </style>
-</head>
-<body>
-    <div class="page-bg" id="pageBg"></div>
-    <div class="particles" id="particles"></div>
-
-    <nav class="nav-modern">
-        <a href="index.html" class="nav-logo">Ա & Ն</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Գլխավոր</a></li>
-            <li><a href="timeline.html" class="active">Ծրագիր</a></li>
-            <li><a href="calendar.html">Օրացույց</a></li>
-            <li><a href="congratulations.html">Շնորհավորանք</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <h1 class="names-hero font-script animate-fade-in" style="font-size:4.2rem">Օրվա Ծրագիր</h1>
-        <p class="font-elegant animate-fade-in delay-1" style="margin:25px 0 55px; font-size:1.4rem; color:var(--gold-light)">
-            Հունիսի 19, 2027 • Ուրբաթ
-        </p>
-
-        <div class="timeline-modern">
-            <div class="timeline-item glass-card animate-fade-in">
-                <div class="timeline-dot" title="Հարսի տուն"></div>
-                <div class="timeline-time">12:30</div>
-                <div class="timeline-event font-elegant">Հարսի տուն</div>
-                <div class="timeline-address">📍 Փարպի, Փիլիպոսյան փ., տ2</div>
-            </div>
-            <div class="timeline-item glass-card animate-fade-in delay-1">
-                <div class="timeline-dot" title="Եկեղեցի"></div>
-                <div class="timeline-time">13:30</div>
-                <div class="timeline-event font-elegant">Եկեղեցի</div>
-                <div class="timeline-address">📍 Աշտարակ</div>
-            </div>
-            <div class="timeline-item glass-card animate-fade-in delay-2">
-                <div class="timeline-dot" title="Փեսայի տուն"></div>
-                <div class="timeline-time">15:00</div>
-                <div class="timeline-event font-elegant">Փեսայի տուն</div>
-                <div class="timeline-address">📍 Բանգլադեշ Բ2</div>
-            </div>
-            <div class="timeline-item glass-card animate-fade-in delay-1">
-                <div class="timeline-dot" title="Ռեստորան"></div>
-                <div class="timeline-time">17:30</div>
-                <div class="timeline-event font-elegant">Ռեստորան «Դվին»</div>
-                <div class="timeline-address">📍 Էջմիածին</div>
-            </div>
-        </div>
-
-        <div style="margin-top:70px">
-            <a href="calendar.html" class="btn-modern">Տեսնել Օրացույցը ✨</a>
-        </div>
-
-        <footer class="footer-modern">
-            <a href="index.html">← Վերադառնալ Գլխավոր</a>
-        </footer>
-    </div>
-
-    <script>
-        function createParticles() {
-            const container = document.getElementById('particles');
-            if (!container) return;
-            for (let i = 0; i < 50; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.animationDelay = Math.random() * 18 + 's';
-                p.style.animationDuration = (18 + Math.random() * 12) + 's';
-                p.style.width = (2 + Math.random() * 4) + 'px';
-                p.style.height = p.style.width;
-                container.appendChild(p);
-            }
-        }
-
-        function initTimelineAnimation() {
-            const items = document.querySelectorAll('.timeline-item');
-            if (items.length === 0) return;
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => entry.target.classList.add('visible'), index * 220);
-                    }
-                });
-            }, { threshold: 0.15 });
-            items.forEach(item => observer.observe(item));
-        }
-
-        function initParallax() {
-            window.addEventListener('scroll', () => {
-                const bg = document.getElementById('pageBg');
-                if (bg) bg.style.transform = `translateY(${window.pageYOffset * 0.25}px)`;
-            }, { passive: true });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            initTimelineAnimation();
-            initParallax();
-            document.querySelectorAll('.glass-card').forEach((card, i) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(40px)';
-                card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 400 + i * 180);
-            });
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="hy">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Օրացույց | Անի & Նշան</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap');
-        
-        :root {
-            --gold: #d4af37; --gold-light: #f4e4bc; --rose: #e8b4b8;
-            --dark: #1a1a2e; --glass: rgba(255,255,255,0.12);
-            --glass-border: rgba(255,255,255,0.25);
-            --transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-        }
-        
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            font-family: 'Montserrat', sans-serif; color: #fff;
-            overflow-x: hidden; background: var(--dark); line-height: 1.6;
-        }
-        
-        .page-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://raw.githubusercontent.com/Ani20020209/inviteletter/main/WhatsApp%20Image%202026-04-10%20at%2000.24.27%20(2).jpeg') center/cover fixed;
-            z-index: -2; transition: transform 0.5s ease;
-        }
-        .page-bg::after {
-            content:''; position:absolute; top:0; left:0; width:100%; height:100%;
-            background: linear-gradient(135deg, rgba(26,26,46,0.88) 0%, rgba(45,38,75,0.82) 100%);
-            z-index: -1;
-        }
-        
-        .particles { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:-1; overflow:hidden; }
-        .particle {
-            position:absolute; width:3px; height:3px; background:var(--gold);
-            border-radius:50%; opacity:0.7; animation: float 18s infinite linear;
-        }
-        @keyframes float {
-            0% { transform:translateY(100vh) rotate(0deg); opacity:0; }
-            15% { opacity:0.9; } 85% { opacity:0.9; }
-            100% { transform:translateY(-100px) rotate(720deg); opacity:0; }
-        }
-        
-        .glass-card {
-            background: var(--glass); backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px); border:1px solid var(--glass-border);
-            border-radius: 28px; padding: 45px 40px;
-            box-shadow: 0 12px 45px rgba(0,0,0,0.35);
-            transition: var(--transition); position: relative; overflow: hidden;
-        }
-        .glass-card::before {
-            content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.7s ease;
-        }
-        .glass-card:hover::before { left: 100%; }
-        .glass-card:hover {
-            transform: translateY(-10px) scale(1.015);
-            border-color: var(--gold);
-            box-shadow: 0 25px 60px rgba(212,175,55,0.35);
-        }
-        
-        .font-script { font-family: 'Great Vibes', cursive; }
-        .font-elegant { font-family: 'Cormorant Garamond', serif; }
-        
-        .names-hero {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(3rem, 7vw, 5rem);
-            background: linear-gradient(135deg, #fff 0%, var(--gold-light) 45%, #fff 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; text-shadow: 0 6px 25px rgba(0,0,0,0.35);
-        }
-        
-        .nav-modern {
-            position: fixed; top: 0; width: 100%; padding: 18px 45px;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; background: rgba(26,26,46,0.85);
-            backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border);
-        }
-        .nav-logo {
-            font-family: 'Great Vibes', cursive; font-size: 2rem;
-            color: var(--gold); text-decoration: none; letter-spacing: 2px;
-        }
-        .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a {
-            color: #fff; text-decoration: none; font-weight: 400;
-            letter-spacing: 1.5px; position: relative; padding: 8px 0;
-            transition: var(--transition); font-size: 0.95rem;
-        }
-        .nav-links a::after {
-            content:''; position:absolute; bottom:0; left:0; width:0; height:2px;
-            background: var(--gold); transition: var(--transition);
-        }
-        .nav-links a:hover { color: var(--gold); transform: translateY(-2px); }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a.active { color: var(--gold); }
-        .nav-links a.active::after { width: 100%; }
-        
-        .btn-modern {
-            display: inline-flex; align-items: center; gap: 12px;
-            padding: 18px 48px; background: linear-gradient(135deg, var(--gold) 0%, #b8962e 100%);
-            color: var(--dark); text-decoration: none; border-radius: 55px;
-            font-weight: 500; letter-spacing: 2px; border: none; cursor: pointer;
-            transition: var(--transition); box-shadow: 0 12px 35px rgba(212,175,55,0.45);
-            position: relative; overflow: hidden; font-size: 1.05rem;
-        }
-        .btn-modern::before {
-            content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-            transition: left 0.6s ease;
-        }
-        .btn-modern:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 20px 50px rgba(212,175,55,0.65);
-        }
-        .btn-modern:hover::before { left: 100%; }
-        
-        /* Luxury Calendar */
-        .calendar-modern {
-            display: inline-block; background: rgba(255,255,255,0.97);
-            border-radius: 28px; padding: 35px; color: var(--dark);
-            box-shadow: 0 25px 70px rgba(0,0,0,0.45);
-            border: 3px solid var(--gold);
-        }
-        .calendar-header {
-            font-family: 'Cormorant Garamond', serif; font-size: 2rem;
-            font-weight: 600; text-align: center; color: var(--gold);
-            margin-bottom: 30px; letter-spacing: 4px; text-transform: uppercase;
-        }
-        .calendar-grid {
-            display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px;
-        }
-        .calendar-day-header {
-            font-weight: 600; color: #555; padding: 14px 5px;
-            text-align: center; font-size: 0.9rem; text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .calendar-day {
-            aspect-ratio: 1; display: flex; align-items: center;
-            justify-content: center; border-radius: 50%; font-weight: 500;
-            cursor: default; transition: var(--transition); position: relative;
-            font-size: 1.05rem;
-        }
-        .calendar-day:not(.empty):hover {
-            background: var(--rose); color: white; transform: scale(1.25) translateY(-3px);
-            z-index: 2; box-shadow: 0 10px 30px rgba(232,180,184,0.5);
-        }
-        .calendar-day.wedding-day {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-            color: white; animation: pulse-heart 2.2s infinite;
-            box-shadow: 0 0 30px rgba(238,90,111,0.7), 0 0 60px rgba(238,90,111,0.4);
-            font-weight: 600; font-size: 1.2rem;
-        }
-        .calendar-day.wedding-day::after {
-            content: '♥'; position: absolute; top: -12px; right: -12px;
-            font-size: 1.6rem; animation: bounce 1.2s infinite;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.3);
-        }
-        @keyframes pulse-heart {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(238,90,111,0.7), 0 0 60px rgba(238,90,111,0.4); }
-            50% { transform: scale(1.12); box-shadow: 0 0 45px rgba(238,90,111,0.95), 0 0 85px rgba(238,90,111,0.65); }
-        }
-        @keyframes bounce {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.5) rotate(12deg); }
-        }
-        
-        .container {
-            max-width: 1150px; margin: 0 auto; padding: 130px 35px 70px;
-            min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; text-align: center;
-        }
-        .section-title {
-            font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4.5vw, 3.3rem);
-            margin-bottom: 45px; color: var(--gold-light); position: relative;
-            display: inline-block; font-weight: 600;
-        }
-        .section-title::after {
-            content: '✦'; display: block; font-size: 1.8rem;
-            color: var(--gold); margin-top: 18px; animation: pulse 2s infinite;
-        }
-        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
-        
-        .footer-modern {
-            margin-top: auto; padding: 45px 25px; text-align: center;
-            font-family: 'Great Vibes', cursive; font-size: 1.5rem;
-            color: rgba(255,255,255,0.9);
-        }
-        .footer-modern a { color: var(--gold); text-decoration: none; transition: var(--transition); }
-        .footer-modern a:hover { color: #fff; text-shadow: 0 0 15px var(--gold); }
-        
-        @keyframes fadeInUp { from { opacity:0; transform:translateY(50px); } to { opacity:1; transform:translateY(0); } }
-        .animate-fade-in { animation: fadeInUp 0.9s ease forwards; }
-        .animate-fade-in.delay-1 { animation-delay: 0.25s; }
-        
-        @media (max-width: 900px) {
-            .nav-modern { padding: 16px 25px; flex-wrap: wrap; }
-            .nav-links { gap: 20px; font-size: 0.85rem; width: 100%; justify-content: center; margin-top: 18px; }
-            .glass-card { padding: 35px 28px; }
-            .calendar-grid { gap: 6px; }
-            .calendar-day { font-size: 0.95rem; }
-        }
-        @media (max-width: 600px) {
-            .names-hero { font-size: clamp(2.5rem, 9vw, 4rem); }
-            .calendar-header { font-size: 1.6rem; }
-            .calendar-day { font-size: 0.85rem; }
-            .calendar-day.wedding-day::after { font-size: 1.3rem; top: -10px; right: -10px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="page-bg" id="pageBg"></div>
-    <div class="particles" id="particles"></div>
-
-    <nav class="nav-modern">
-        <a href="index.html" class="nav-logo">Ա & Ն</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Գլխավոր</a></li>
-            <li><a href="timeline.html">Ծրագիր</a></li>
-            <li><a href="calendar.html" class="active">Օրացույց</a></li>
-            <li><a href="congratulations.html">Շնորհավորանք</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <h1 class="names-hero font-script animate-fade-in" style="font-size:4.2rem">Հունիս 2027</h1>
-        <p class="font-elegant animate-fade-in delay-1" style="margin:25px 0 45px; color:var(--gold-light)">
-            Նշեք Ձեր օրացույցում մեր երջանիկ օրը ✨
-        </p>
-
-        <div class="glass-card animate-fade-in" style="display:inline-block; margin:35px 0">
-            <div class="calendar-modern">
-                <div class="calendar-header">ՀՈՒՆԻՍ 2027</div>
-                <div class="calendar-grid" id="calendarGrid"></div>
-            </div>
-        </div>
-
-        <div style="margin:45px 0">
-            <div style="display:inline-flex; align-items:center; gap:15px; background:rgba(255,255,255,0.12); padding:18px 35px; border-radius:55px; border:2px solid var(--glass-border)">
-                <span style="width:24px; height:24px; background:linear-gradient(135deg, #ff6b6b, #ee5a6f); border-radius:50%; display:inline-box; box-shadow:0 0 20px rgba(238,90,111,0.7)"></span>
-                <span class="font-elegant" style="font-size:1.2rem">19 Հունիս • Մեր Հարսանիքը ♥</span>
-            </div>
-        </div>
-
-        <div style="margin-top:55px">
-            <a href="congratulations.html" class="btn-modern">✍️ Թողնել Շնորհավորանք</a>
-        </div>
-
-        <footer class="footer-modern">
-            <a href="index.html">← Վերադառնալ Գլխավոր</a>
-        </footer>
-    </div>
-
-    <script>
-        function createParticles() {
-            const container = document.getElementById('particles');
-            if (!container) return;
-            for (let i = 0; i < 50; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.animationDelay = Math.random() * 18 + 's';
-                p.style.animationDuration = (18 + Math.random() * 12) + 's';
-                p.style.width = (2 + Math.random() * 4) + 'px';
-                p.style.height = p.style.width;
-                container.appendChild(p);
-            }
-        }
-
-        function generateCalendar() {
-            const grid = document.getElementById('calendarGrid');
-            if (!grid) return;
-            const daysOfWeek = ['Երկ', 'Երք', 'Չրք', 'Հնգ', 'Ուրբ', 'Շբթ', 'Կիր'];
-            daysOfWeek.forEach(day => {
-                const header = document.createElement('div');
-                header.className = 'calendar-day-header';
-                header.textContent = day;
-                grid.appendChild(header);
-            });
-            const emptyDays = 1; // June 1, 2027 is Tuesday
-            const daysInMonth = 30;
-            for (let i = 0; i < emptyDays; i++) {
-                const empty = document.createElement('div');
-                empty.className = 'calendar-day empty';
-                grid.appendChild(empty);
-            }
-            for (let day = 1; day <= daysInMonth; day++) {
-                const cell = document.createElement('div');
-                cell.className = 'calendar-day normal';
-                cell.textContent = day;
-                if (day === 19) {
-                    cell.className = 'calendar-day wedding-day';
-                    cell.title = 'Մեր Հարսանիքը! ♥';
-                }
-                grid.appendChild(cell);
-            }
-        }
-
-        function initParallax() {
-            window.addEventListener('scroll', () => {
-                const bg = document.getElementById('pageBg');
-                if (bg) bg.style.transform = `translateY(${window.pageYOffset * 0.25}px)`;
-            }, { passive: true });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            generateCalendar();
-            initParallax();
-            document.querySelectorAll('.glass-card').forEach((card, i) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(40px)';
-                card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 400 + i * 180);
-            });
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="hy">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Շնորհավորանքներ | Անի & Նշան</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap');
-        
-        :root {
-            --gold: #d4af37; --gold-light: #f4e4bc;
-            --dark: #1a1a2e; --glass: rgba(255,255,255,0.12);
-            --glass-border: rgba(255,255,255,0.25);
-        }
-        
-        * { margin:0; padding:0; box-sizing:border-box; }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--dark) 0%, #2d264b 100%);
-            color: #fff; min-height: 100vh; line-height: 1.6;
-        }
-        
-        .page-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://raw.githubusercontent.com/Ani20020209/inviteletter/main/WhatsApp%20Image%202026-04-10%20at%2000.24.27.jpeg') center/cover fixed;
-            z-index: -2;
-        }
-        .page-bg::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(26,26,46,0.92) 0%, rgba(40,30,50,0.85) 100%);
-            z-index: -1;
-        }
-        
-        .nav {
-            position: fixed; top: 0; width: 100%; padding: 16px 35px;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(26,26,46,0.95); backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border); z-index: 100;
-        }
-        .nav-logo {
-            font-family: 'Great Vibes', cursive; font-size: 1.9rem;
-            color: var(--gold); text-decoration: none; letter-spacing: 2px;
-        }
-        .nav-links { display: flex; gap: 28px; list-style: none; }
-        .nav-links a {
-            color: #fff; text-decoration: none; font-size: 0.95rem;
-            letter-spacing: 1.5px; transition: color 0.3s;
-        }
-        .nav-links a:hover { color: var(--gold); }
-        .nav-links a.active { color: var(--gold); }
-        
-        .container {
-            max-width: 850px; margin: 0 auto; padding: 125px 30px 45px;
-        }
-        
-        .header { text-align: center; margin-bottom: 45px; }
-        .names {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.8rem, 7vw, 4.5rem);
-            background: linear-gradient(135deg, #fff, var(--gold-light));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
-        }
-        .subtitle {
-            font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
-            color: var(--gold-light); margin-bottom: 35px;
-        }
-        .back-link {
-            display: inline-block; color: var(--gold); text-decoration: none;
-            padding: 12px 30px; border: 2.5px solid var(--gold);
-            border-radius: 35px; transition: all 0.35s; font-size: 1rem;
-            font-weight: 500; letter-spacing: 1px;
-        }
-        .back-link:hover { background: var(--gold); color: var(--dark); transform: translateY(-3px); }
-        
-        .card {
-            background: var(--glass); backdrop-filter: blur(14px);
-            border: 1px solid var(--glass-border); border-radius: 24px;
-            padding: 40px 35px; margin-bottom: 40px;
-            box-shadow: 0 12px 45px rgba(0,0,0,0.35);
-            transition: all 0.4s ease;
-        }
-        .card:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .card-title {
-            font-family: 'Cormorant Garamond', serif; font-size: 2rem;
-            text-align: center; color: var(--gold-light); margin-bottom: 30px;
-            font-weight: 600;
-        }
-        
-        .form-group { margin-bottom: 25px; }
-        .form-group label {
-            display: block; margin-bottom: 10px; font-weight: 500;
-            color: var(--gold-light); letter-spacing: 0.8px; font-size: 1.05rem;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 18px 24px;
-            background: rgba(255,255,255,0.1); border: 2px solid var(--glass-border);
-            border-radius: 16px; color: #fff; font-family: 'Montserrat', sans-serif;
-            font-size: 1.05rem; transition: all 0.3s;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none; border-color: var(--gold);
-            background: rgba(255,255,255,0.18);
-            box-shadow: 0 0 25px rgba(212,175,55,0.3);
-        }
-        .form-group textarea { min-height: 140px; resize: vertical; }
-        
-        .btn {
-            width: 100%; padding: 19px;
-            background: linear-gradient(135deg, var(--gold), #b8962e);
-            color: var(--dark); border: none; border-radius: 16px;
-            font-size: 1.15rem; font-weight: 500; cursor: pointer;
-            transition: all 0.35s; letter-spacing: 1.5px;
-        }
-        .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(212,175,55,0.55);
-        }
-        
-        .success-msg {
-            background: linear-gradient(135deg, #4CAF50, #45a049);
-            color: white; padding: 18px 25px; border-radius: 14px;
-            margin-bottom: 25px; text-align: center; display: none;
-            animation: slideIn 0.5s ease; font-weight: 500;
-            box-shadow: 0 8px 25px rgba(76,175,80,0.4);
-        }
-        @keyframes slideIn {
-            from { opacity:0; transform:translateY(-15px); }
-            to { opacity:1; transform:translateY(0); }
-        }
-        
-        .messages-title {
-            font-family: 'Cormorant Garamond', serif; font-size: 2rem;
-            text-align: center; color: var(--gold-light); margin-bottom: 30px;
-            font-weight: 600;
-        }
-        .message {
-            background: rgba(255,255,255,0.1); border-left: 5px solid var(--gold);
-            border-radius: 0 18px 18px 0; padding: 25px; margin-bottom: 22px;
-            transition: all 0.35s;
-        }
-        .message:hover {
-            transform: translateX(8px); background: rgba(212,175,55,0.18);
-            border-left-color: #fff;
-        }
-        .message-author {
-            font-weight: 600; color: var(--gold-light);
-            font-size: 1.25rem; margin-bottom: 8px; font-family: 'Cormorant Garamond', serif;
-        }
-        .message-text { color: rgba(255,255,255,0.95); line-height: 1.8; font-size: 1.05rem; }
-        .message-date {
-            margin-top: 14px; font-size: 0.9rem; color: rgba(255,255,255,0.65);
-            font-style: italic;
-        }
-        .empty-msg {
-            text-align: center; color: rgba(255,255,255,0.75);
-            font-style: italic; padding: 40px; font-size: 1.1rem;
-        }
-        
-        .footer {
-            text-align: center; padding: 40px 25px;
-            font-family: 'Great Vibes', cursive; font-size: 1.4rem;
-            color: rgba(255,255,255,0.9);
-        }
-        
-        @media (max-width: 700px) {
-            .nav { padding: 14px 22px; flex-wrap: wrap; }
-            .nav-links { width: 100%; justify-content: center; margin-top: 15px; gap: 20px; }
-            .card { padding: 32px 25px; }
-            .container { padding-top: 115px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="page-bg"></div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Նշան և Անի | Հարսանիքի Հրավեր</title>
+  
+  <!-- Google Fonts for Armenian support + Elegant fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans+Armenian:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f4e4c1;
+      --rose: #b76e79;
+      --cream: #fff9f5;
+      --dark: #2c2c2c;
+      --shadow: 0 8px 32px rgba(0,0,0,0.15);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
     
-    <nav class="nav">
-        <a href="index.html" class="nav-logo">Ա & Ն</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Գլխավոր</a></li>
-            <li><a href="timeline.html">Ծրագիր</a></li>
-            <li><a href="calendar.html">Օրացույց</a></li>
-            <li><a href="congratulations.html" class="active">Շնորհավորանք</a></li>
-        </ul>
-    </nav>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     
-    <div class="container">
-        <div class="header">
-            <h1 class="names">Անի & Նշան</h1>
-            <p class="subtitle">Շնորհավորանքների Գիրք</p>
-            <a href="index.html" class="back-link">← Վերադառնալ Հրավերին</a>
-        </div>
-        
-        <div class="card">
-            <h2 class="card-title">Թողեք Ձեր Շնորհավորանքը</h2>
-            <div class="success-msg" id="successMsg">
-                ✓ Ձեր շնորհավորանքը հաջողությամբ ուղարկվեց։ Շնորհակալություն։ ❤️
-            </div>
-            <form id="msgForm">
-                <div class="form-group">
-                    <label for="name">Ձեր Անունը *</label>
-                    <input type="text" id="name" required placeholder="Օրինակ՝ Մարիամ">
-                </div>
-                <div class="form-group">
-                    <label for="message">Ձեր Շնորհավորանքը *</label>
-                    <textarea id="message" required placeholder="Գրեք Ձեր ջերմ մաղթանքները..."></textarea>
-                </div>
-                <button type="submit" class="btn">✨ Ուղարկել Շնորհավորանք</button>
-            </form>
-        </div>
-        
-        <div class="card">
-            <h2 class="messages-title">Ստացված Շնորհավորանքներ</h2>
-            <div id="messagesList">
-                <p class="empty-msg">Դեռևս շնորհավորանքներ չկան։ Եղեք առաջինը։ 💝</p>
-            </div>
-        </div>
-        
-        <footer class="footer">Սիրով՝ Անի & Նշան • 19.06.2027 💍</footer>
-    </div>
+    body {
+      font-family: 'Noto Sans Armenian', 'Playfair Display', serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
     
-    <script>
-        const form = document.getElementById('msgForm');
-        const nameInput = document.getElementById('name');
-        const messageInput = document.getElementById('message');
-        const successMsg = document.getElementById('successMsg');
-        const messagesList = document.getElementById('messagesList');
+    /* Page container */
+    .invitation {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* ===== PAGE 1 - COVER ===== */
+    .page-cover {
+      min-height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
+                  url('https://raw.githubusercontent.com/Ani20020209/inviteletter/93ee037e453960b19e29ed1a941323162b21cf58/WhatsApp%20Image%202026-04-10%20at%2000.24.27.jpeg') center/cover no-repeat fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      color: white;
+      position: relative;
+    }
+    
+    .page-cover::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.6) 100%);
+    }
+    
+    .cover-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      animation: fadeInUp 1.2s ease-out;
+    }
+    
+    .names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3rem, 8vw, 6rem);
+      margin: 1rem 0;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      letter-spacing: 3px;
+      background: linear-gradient(45deg, #fff, var(--gold-light), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .ampersand {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--gold);
+      margin: 0 10px;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    
+    .wedding-date {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      margin: 1.5rem 0;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-top: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      padding: 1rem 2rem;
+      display: inline-block;
+    }
+    
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px;
+      animation: bounce 2s infinite;
+      color: var(--gold-light);
+      font-size: 1.2rem;
+    }
+    
+    /* ===== PAGE 2 - DETAILS ===== */
+    .page-details {
+      background: linear-gradient(rgba(255,249,245,0.92), rgba(255,249,245,0.95)), 
+                  url('https://raw.githubusercontent.com/Ani20020209/inviteletter/1218049257abf5d3549308fee12f0ab1d7b15978/WhatsApp%20Image%202026-04-10%20at%2000.24.27%20(1).jpeg') center/cover no-repeat fixed;
+      padding: 3rem 2rem;
+      position: relative;
+    }
+    
+    .page-details::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at top, rgba(212,175,55,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 2rem 0 3rem;
+      color: var(--dark);
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .section-title::after {
+      content: '✦';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gold);
+      font-size: 1.5rem;
+    }
+    
+    /* ===== COUNTDOWN ===== */
+    .countdown-container {
+      background: rgba(255,255,255,0.85);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border: 2px solid var(--gold-light);
+      backdrop-filter: blur(10px);
+    }
+    
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    
+    .countdown-item {
+      background: linear-gradient(145deg, #fff, var(--cream));
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      min-width: 100px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border: 1px solid var(--gold-light);
+      transition: var(--transition);
+    }
+    
+    .countdown-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(212,175,55,0.25);
+    }
+    
+    .countdown-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      display: block;
+    }
+    
+    .countdown-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-top: 0.3rem;
+    }
+    
+    /* ===== CALENDAR WITH HEART ===== */
+    .calendar-container {
+      background: rgba(255,255,255,0.9);
+      border-radius: 24px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border: 3px double var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .calendar-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
+      z-index: 0;
+    }
+    
+    .calendar-header {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .calendar-day-header {
+      font-weight: 600;
+      padding: 8px;
+      font-size: 0.9rem;
+      color: var(--gold);
+    }
+    
+    .calendar-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      cursor: default;
+    }
+    
+    .calendar-day:not(.empty):hover {
+      background: var(--gold-light);
+      transform: scale(1.05);
+    }
+    
+    .calendar-day.empty {
+      visibility: hidden;
+    }
+    
+    .calendar-day.wedding-day {
+      background: linear-gradient(135deg, var(--rose), #9a4f5a);
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 20px rgba(183,110,121,0.4);
+      animation: pulse 2s infinite;
+    }
+    
+    .calendar-day.wedding-day::after {
+      content: '❤';
+      position: absolute;
+      font-size: 2.5rem;
+      opacity: 0.3;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    
+    /* ===== TIMELINE & MAPS ===== */
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+      margin: 3rem 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--gold), var(--rose), var(--gold));
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+    
+    .timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: calc(50% + 30px);
+      position: relative;
+      margin: 2.5rem 0;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: var(--transition);
+    }
+    
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .timeline-item:nth-child(even) {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(50% + 30px);
+      transform: translateX(30px);
+    }
+    
+    .timeline-item:nth-child(even).visible {
+      transform: translateX(0);
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 24px;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 4px solid white;
+      box-shadow: 0 0 0 2px var(--rose), 0 4px 10px rgba(0,0,0,0.15);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .timeline-dot::after {
+      content: '→';
+      color: white;
+      font-size: 0.7rem;
+      font-weight: bold;
+      position: absolute;
+      animation: arrowPulse 1.5s infinite;
+    }
+    
+    .timeline-content {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      max-width: 350px;
+      border-left: 4px solid var(--gold);
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+      border-left: none;
+      border-right: 4px solid var(--gold);
+    }
+    
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+    
+    .timeline-time {
+      font-weight: 700;
+      color: var(--rose);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    
+    .timeline-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    
+    .timeline-address {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--gold), #b89e2e);
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+    }
+    
+    .map-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212,175,55,0.45);
+      background: linear-gradient(135deg, #b89e2e, var(--gold));
+    }
+    
+    .map-link::before {
+      content: '📍';
+    }
+    
+    /* ===== DECORATIVE ELEMENTS ===== */
+    .divider {
+      text-align: center;
+      margin: 3rem 0;
+      color: var(--gold);
+      font-size: 1.5rem;
+      position: relative;
+    }
+    
+    .divider::before,
+    .divider::after {
+      content: '✦ ✦ ✦';
+      display: block;
+      margin: 10px 0;
+      opacity: 0.7;
+    }
+    
+    .footer-note {
+      text-align: center;
+      padding: 2rem;
+      font-style: italic;
+      color: var(--dark);
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+    
+    .footer-note::before {
+      content: '"';
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gold-light);
+      opacity: 0.6;
+    }
+    
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    @keyframes heartbeat {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+      14% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.6; }
+      28% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+      42% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.5; }
+      70% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-15px); }
+      60% { transform: translateY(-10px); }
+    }
+    
+    @keyframes arrowPulse {
+      0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 30px;
+      }
+      
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        padding-left: 70px;
+        padding-right: 0;
+        justify-content: flex-start;
+      }
+      
+      .timeline-dot {
+        left: 30px;
+      }
+      
+      .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        border-left: 4px solid var(--gold);
+        border-right: none;
+        max-width: 100%;
+      }
+      
+      .countdown {
+        gap: 0.8rem;
+      }
+      
+      .countdown-item {
+        min-width: 80px;
+        padding: 1rem;
+      }
+      
+      .countdown-number {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .names {
+        font-size: 2.8rem;
+      }
+      
+      .countdown-item {
+        min-width: 70px;
+        padding: 0.8rem;
+      }
+      
+      .countdown-number {
+        font-size: 1.7rem;
+      }
+      
+      .countdown-label {
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Print styles */
+    @media print {
+      .page-cover, .page-details {
+        background: white !important;
+        color: black !important;
+      }
+      .scroll-hint, .map-link {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="invitation">
+    
+    <!-- ===== PAGE 1: COVER ===== -->
+    <section class="page-cover" id="cover">
+      <div class="cover-content">
+        <div style="font-size: 1.3rem; letter-spacing: 3px; margin-bottom: 0.5rem; opacity: 0.95;">Հարսանիքի Հրավեր</div>
+        <h1 class="names">Նշան <span class="ampersand">&</span> Անի</h1>
+        <div class="wedding-date">19 Հունիսի, 2027</div>
+        <p style="font-size: 1.2rem; margin-top: 1.5rem; max-width: 600px; line-height: 1.8;">
+          Սիրով հրավիրում ենք ձեզ մեր կյանքի ամենագեղեցիկ օրը կիսելու մեզ հետ
+        </p>
+      </div>
+      <div class="scroll-hint">↓ Սեղմեք ներքև շարունակելու համար ↓</div>
+    </section>
+    
+    <!-- ===== PAGE 2: DETAILS ===== -->
+    <section class="page-details" id="details">
+      <div class="container">
         
-        document.addEventListener('DOMContentLoaded', loadMessages);
+        <!-- Countdown Timer -->
+        <div class="countdown-container">
+          <h2 class="section-title">Մինչև Մեր Մեծ Օրը</h2>
+          <div class="countdown" id="countdown">
+            <div class="countdown-item">
+              <span class="countdown-number" id="days">00</span>
+              <span class="countdown-label">Օր</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="hours">00</span>
+              <span class="countdown-label">Ժամ</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="minutes">00</span>
+              <span class="countdown-label">Րոպե</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="seconds">00</span>
+              <span class="countdown-label">Վայրկյան</span>
+            </div>
+          </div>
+        </div>
         
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = nameInput.value.trim();
-            const message = messageInput.value.trim();
-            if (!name || !message) return;
-            
-            const newMessage = {
-                name: sanitizeInput(name),
-                message: sanitizeInput(message),
-                date: new Date().toISOString()
-            };
-            
-            const messages = getMessages();
-            messages.push(newMessage);
-            
-            try {
-                localStorage.setItem('weddingMessages', JSON.stringify(messages));
-            } catch (err) { console.log('Storage error:', err); }
-            
-            successMsg.style.display = 'block';
-            form.reset();
-            loadMessages();
-            setTimeout(() => { successMsg.style.display = 'none'; }, 3500);
+        <div class="divider">✦ ✦ ✦</div>
+        
+        <!-- Luxury Calendar with Heart -->
+        <div class="calendar-container">
+          <div class="calendar-header">Հունիս 2027</div>
+          <div class="calendar-grid" id="calendar-grid">
+            <!-- Days headers -->
+            <div class="calendar-day-header">Երկ</div>
+            <div class="calendar-day-header">Երք</div>
+            <div class="calendar-day-header">Չոր</div>
+            <div class="calendar-day-header">Հնգ</div>
+            <div class="calendar-day-header">Ուրբ</div>
+            <div class="calendar-day-header">Շաբ</div>
+            <div class="calendar-day-header">Կիր</div>
+            <!-- Calendar days will be generated by JS -->
+          </div>
+          <p style="margin-top: 1.5rem; font-style: italic; color: var(--rose);">
+            ❤ Այս օրը մեր սիրո պատմությունը նոր գլուխ է բացում ❤
+          </p>
+        </div>
+        
+        <div class="divider">✦ ✦ ✦</div>
+        
+        <!-- Timeline with Locations & Maps -->
+        <h2 class="section-title">Օրվա Ծրագիր</h2>
+        <div class="timeline">
+          
+          <!-- Location 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-time">12:30</span>
+              <div class="timeline-title">Հարսի տուն</div>
+              <span class="timeline-address">Փարպի, Փիլիպոսյան փ․, տ2</span>
+              <a href="https://yandex.com/maps/-/CPDZbD5-" target="_blank" class="map-link">Ուղղություն</a>
+            </div>
+          </div>
+          
+          <!-- Location 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-time">13:30</span>
+              <div class="timeline-title">Եկեղեցի</div>
+              <span class="timeline-address">Աշտարակ</span>
+              <a href="https://yandex.com/maps/-/CPDZb2nI" target="_blank" class="calendar-day">Ուղղություն</a>
+            </div>
+          </div>
+          
+          <!-- Location 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-time">15:00</span>
+              <div class="timeline-title">Փեսայի տուն</div>
+              <span class="timeline-address">Բանգլադեշ Բ2</span>
+              <a href="https://yandex.com/maps/-/CPDZfQ6h" target="_blank" class="map-link">Ուղղություն</a>
+            </div>
+          </div>
+          
+          <!-- Location 4 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-time">17:30</span>
+              <div class="timeline-title">Ռեստորան «Դվին»</div>
+              <span class="timeline-address">Էջմիածին</span>
+              <a href="https://yandex.com/maps/-/CPwsALKO" target="_blank" class="map-link">Ուղղություն</a>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Footer Note -->
+        <div class="footer-note">
+          Սերը միավորում է սրտերը, իսկ հարսանիքը՝ ընտանիքները:<br>
+          Սպասում ենք ձեզ մեր երջանկության վկաներ լինելու համար 💍
+        </div>
+        
+      </div>
+    </section>
+    
+  </div>
+
+  <script>
+    // ===== COUNTDOWN TIMER =====
+    function updateCountdown() {
+      const weddingDate = new Date('June 19, 2027 12:00:00').getTime();
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+      
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<div style="font-size:1.5rem;font-weight:600;color:var(--rose)">🎉 Այսօր մեր մեծ օրն է! 🎉</div>';
+        return;
+      }
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').textContent = days.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+    
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initial call
+    
+    // ===== CALENDAR GENERATOR =====
+    function generateCalendar() {
+      const grid = document.getElementById('calendar-grid');
+      const year = 2027;
+      const month = 5; // June is 5 (0-indexed)
+      
+      // First day of month (0=Sunday, 1=Monday, etc.)
+      const firstDay = new Date(year, month, 1).getDay();
+      // Adjust for Armenian calendar (Monday first)
+      const startOffset = firstDay === 0 ? 6 : firstDay - 1;
+      
+      // Days in June 2027
+      const daysInMonth = 30;
+      
+      // Add empty cells for days before the 1st
+      for (let i = 0; i < startOffset; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'calendar-day empty';
+        grid.appendChild(emptyDay);
+      }
+      
+      // Add actual days
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayEl = document.createElement('div');
+        dayEl.className = 'calendar-day';
+        dayEl.textContent = day;
+        
+        // Highlight wedding day (June 19)
+        if (day === 19) {
+          dayEl.classList.add('wedding-day');
+          dayEl.title = 'Մեր հարսանիքի օրը ❤';
+        }
+        
+        grid.appendChild(dayEl);
+      }
+    }
+    
+    // Initialize calendar
+    generateCalendar();
+    
+    // ===== SCROLL ANIMATIONS FOR TIMELINE =====
+    function handleScrollAnimations() {
+      const items = document.querySelectorAll('.timeline-item');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
         });
-        
-        function loadMessages() {
-            const messages = getMessages();
-            if (messages.length === 0) {
-                messagesList.innerHTML = '<p class="empty-msg">Դեռևս շնորհավորանքներ չկան։ Եղեք առաջինը։ 💝</p>';
-                return;
-            }
-            const html = messages.slice().reverse().map(msg => {
-                const date = new Date(msg.date);
-                const formattedDate = date.toLocaleString('hy-AM', {
-                    year: 'numeric', month: 'short', day: 'numeric',
-                    hour: '2-digit', minute: '2-digit'
-                });
-                return `
-                    <div class="message">
-                        <div class="message-author">${msg.name}</div>
-                        <div class="message-text">${msg.message.replace(/\n/g, '<br>')}</div>
-                        <div class="message-date">${formattedDate}</div>
-                    </div>
-                `;
-            }).join('');
-            messagesList.innerHTML = html;
-        }
-        
-        function getMessages() {
-            try {
-                const stored = localStorage.getItem('weddingMessages');
-                return stored ? JSON.parse(stored) : [];
-            } catch (err) { console.log('Error reading messages:', err); return []; }
-        }
-        
-        function sanitizeInput(str) {
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
-        }
-    </script>
+      }, { threshold: 0.1 });
+      
+      items.forEach(item => observer.observe(item));
+    }
+    
+    // Initialize scroll animations
+    document.addEventListener('DOMContentLoaded', handleScrollAnimations);
+    
+    // ===== SMOOTH SCROLL FOR NAVIGATION =====
+    document.querySelector('.scroll-hint').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('details').scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    // ===== ADD INTERACTIVE HOVER EFFECTS TO MAP LINKS =====
+    document.querySelectorAll('.map-link').forEach(link => {
+      link.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px)';
+      });
+      link.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+    
+    // ===== CONFETTI EFFECT ON WEDDING DAY (Optional fun) =====
+    function checkIfWeddingDay() {
+      const today = new Date();
+      const wedding = new Date('June 19, 2027');
+      if (today.toDateString() === wedding.toDateString()) {
+        // Could add confetti animation here
+        console.log('🎉 Հարսանիքի օր է! 🎉');
+      }
+    }
+    checkIfWeddingDay();
+  </script>
 </body>
 </html>
