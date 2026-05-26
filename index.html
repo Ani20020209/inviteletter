@@ -433,7 +433,7 @@
     }
     
     .map-link::before {
-      content: '📍';
+      content: '🗺️';
     }
     
     /* ===== DECORATIVE ELEMENTS ===== */
@@ -655,7 +655,7 @@
         <h2 class="section-title">Օրվա Ծրագիր</h2>
         <div class="timeline">
           
-          <!-- Location 1 -->
+          <!-- Location 1: Հարսի տուն -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -666,29 +666,29 @@
             </div>
           </div>
           
-          <!-- Location 2 -->
+          <!-- Location 2: Եկեղեցի (ՈՒՂՂՎԱԾ՝ class="map-link") -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <span class="timeline-time">13:30</span>
               <div class="timeline-title">Եկեղեցի</div>
               <span class="timeline-address">Աշտարակ</span>
-              <a href="https://yandex.com/maps/-/CPDZb2nI" target="_blank" class="calendar-day">ՔՐՏԵԶ</a>
+              <a href="https://yandex.com/maps/-/CPDZb2nI" target="_blank" class="map-link">ՔԱՐՏԵԶ</a>
             </div>
           </div>
           
-          <!-- Location 3 -->
+          <!-- Location 3: Փեսայի տուն -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <span class="timeline-time">15:00</span>
               <div class="timeline-title">Փեսայի տուն</div>
               <span class="timeline-address">Բանգլադեշ Բ2</span>
-              <a href="https://yandex.com/maps/-/CPDZfQ6h" target="_blank" class="map-link">ՔԱՐՏԵԶԵ</a>
+              <a href="https://yandex.com/maps/-/CPDZfQ6h" target="_blank" class="map-link">ՔԱՐՏԵԶ</a>
             </div>
           </div>
           
-          <!-- Location 4 -->
+          <!-- Location 4: Ռեստորան -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -703,8 +703,8 @@
         
         <!-- Footer Note -->
         <div class="footer-note">
-          Սերը միավորում է սրտերը <br>
-          Սպասում ենք ձեզ մեր գեղեցիկ օրը մեզ հետ կիսելու 💍
+          Սերը միավորում է սրտերը, իսկ հարսանիքը՝ ընտանիքները:<br>
+          Սպասում ենք ձեզ մեր երջանկության վկաներ լինելու համար 💍
         </div>
         
       </div>
@@ -798,9 +798,9 @@
     document.addEventListener('DOMContentLoaded', handleScrollAnimations);
     
     // ===== SMOOTH SCROLL FOR NAVIGATION =====
-    document.querySelector('.scroll-hint').addEventListener('click', (e) => {
+    document.querySelector('.scroll-hint')?.addEventListener('click', (e) => {
       e.preventDefault();
-      document.getElementById('details').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('details')?.scrollIntoView({ behavior: 'smooth' });
     });
     
     // ===== ADD INTERACTIVE HOVER EFFECTS TO MAP LINKS =====
@@ -818,7 +818,6 @@
       const today = new Date();
       const wedding = new Date('June 19, 2027');
       if (today.toDateString() === wedding.toDateString()) {
-        // Could add confetti animation here
         console.log('🎉 Հարսանիքի օր է! 🎉');
       }
     }
