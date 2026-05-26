@@ -412,28 +412,25 @@
     }
     
     .map-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-block;
       background: linear-gradient(135deg, var(--gold), #b89e2e);
-      color: white;
+      color: white !important;
       text-decoration: none;
-      padding: 0.6rem 1.2rem;
+      padding: 0.6rem 1.5rem;
       border-radius: 30px;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.95rem;
       transition: var(--transition);
       box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+      border: none;
+      cursor: pointer;
+      text-align: center;
     }
     
     .map-link:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(212,175,55,0.45);
       background: linear-gradient(135deg, #b89e2e, var(--gold));
-    }
-    
-    .map-link::before {
-      content: '🗺️';
     }
     
     /* ===== DECORATIVE ELEMENTS ===== */
@@ -666,7 +663,7 @@
             </div>
           </div>
           
-          <!-- Location 2: Եկեղեցի (ՈՒՂՂՎԱԾ՝ class="map-link") -->
+          <!-- Location 2: Եկեղեցի -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -684,7 +681,7 @@
               <span class="timeline-time">15:00</span>
               <div class="timeline-title">Փեսայի տուն</div>
               <span class="timeline-address">Բանգլադեշ Բ2</span>
-              <a href="https://yandex.com/maps/-/CPDZfQ6h" target="_blank" class="map-link">ՔԱՐՏԵԶ</a>
+              <a href="https://yandex.com/maps/-/CPDZfQ6h" target="_blank" class="map-link">ՔԱՐՏԵ</a>
             </div>
           </div>
           
@@ -695,7 +692,7 @@
               <span class="timeline-time">17:30</span>
               <div class="timeline-title">Ռեստորան «Դվին»</div>
               <span class="timeline-address">Էջմիածին</span>
-              <a href="https://yandex.com/maps/-/CPwsALKO" target="_blank" class="map-link">ՔԱՐՏԵԶ</a>
+              <a href="https://yandex.com/maps/-/CPwsALKO" target="_blank" class="map-link">ՔԱՐՏԶ</a>
             </div>
           </div>
           
@@ -703,8 +700,8 @@
         
         <!-- Footer Note -->
         <div class="footer-note">
-          Սերը միավորում է սրտերը<br>
-          Սպասում ենք ձեզ մեր ամենաերջանիկ օրը միասին նշելու💍
+          Սերը միավորում է սրտերը, իսկ հարսանիքը՝ նտանիքները:<br>
+          Սպասում ենք ձեզ մեր երջանկության վկաներ լինելու համար 💍
         </div>
         
       </div>
@@ -812,16 +809,6 @@
         this.style.transform = 'translateY(0)';
       });
     });
-    
-    // ===== CONFETTI EFFECT ON WEDDING DAY (Optional fun) =====
-    function checkIfWeddingDay() {
-      const today = new Date();
-      const wedding = new Date('June 19, 2027');
-      if (today.toDateString() === wedding.toDateString()) {
-        console.log('🎉 Հարսանիքի օր է! 🎉');
-      }
-    }
-    checkIfWeddingDay();
   </script>
 </body>
 </html>
