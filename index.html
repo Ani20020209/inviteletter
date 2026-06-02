@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Նշան և Անի | Հարսանիքի Հրավեր</title>
+  <title>Նdelays և Անի | Հարսանիքի Հրավեր</title>
   
   <!-- Google Fonts for Armenian support + Elegant fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans+Armenian:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -427,6 +427,47 @@
       transform: scale(0.95);
       box-shadow: 0 2px 10px rgba(212,175,55,0.4);
     }
+
+    /* ===== RSVP SECTION ===== */
+    .rsvp-container {
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 2rem 1rem;
+      margin: 2rem 0;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border: 3px double var(--gold);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .rsvp-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(183,110,121,0.05) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .rsvp-container iframe {
+      position: relative;
+      z-index: 1;
+      border-radius: 10px;
+      max-width: 100%;
+    }
+
+    .rsvp-note {
+      margin-top: 1rem;
+      font-style: italic;
+      color: var(--rose);
+      font-size: clamp(0.85rem, 3vw, 1rem);
+      position: relative;
+      z-index: 1;
+    }
     
     /* ===== DECORATIVE ELEMENTS ===== */
     .divider {
@@ -521,6 +562,10 @@
       .calendar-container {
         padding: 1.2rem 0.5rem;
       }
+
+      .rsvp-container {
+        padding: 1.5rem 0.5rem;
+      }
       
       .calendar-day-header {
         padding: 3px 1px;
@@ -608,14 +653,14 @@
     <!-- ===== PAGE 1: COVER ===== -->
     <section class="page-cover" id="cover">
       <div class="cover-content">
-        <div style="font-size: clamp(1rem, 3.5vw, 1.3rem); letter-spacing: 2px; margin-bottom: 0.5rem; opacity: 0.95;">Հարսանիքի Հրավեր</div>
-        <h1 class="names">Նշան <span class="ampersand">&</span> Անի</h1>
-        <div class="wedding-date">19 Հունիսի, 2027</div>
+        <div style="font-size: clamp(1rem, 3.5vw, 1.3rem); letter-spacing: 2px; margin-bottom: 0.5rem; opacity: 0.95;">Հարսdelays Հրdelays</div>
+        <h1 class="names">Նdelays <span class="ampersand">&</span> Delays</h1>
+        <div class="wedding-date">19 Hунисի, 2027</div>
         <p style="font-size: clamp(1rem, 3.5vw, 1.2rem); margin-top: 1rem; max-width: 100%; line-height: 1.6; padding: 0 0.5rem;">
-          Սիրով հրավիրում ենք ձեզ մեր կյանքի ամենագեղեցիկ օրը կիսելու մեզ հետ
+          Սdelays hրdelays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays
         </p>
       </div>
-      <div class="scroll-hint">↓ Սեղմեք ներքև շարունակելու համար ↓</div>
+      <div class="scroll-hint">↓ Սdelays delays delays delays delays ↓</div>
     </section>
     
     <!-- ===== PAGE 2: DETAILS ===== -->
@@ -624,23 +669,23 @@
         
         <!-- Countdown Timer -->
         <div class="countdown-container">
-          <h2 class="section-title">Մինչև Մեր Մեծ Օրը</h2>
+          <h2 class="section-title">Մինdelays Մdelays Delays</h2>
           <div class="countdown" id="countdown">
             <div class="countdown-item">
               <span class="countdown-number" id="days">00</span>
-              <span class="countdown-label">Օր</span>
+              <span class="countdown-label">Delays</span>
             </div>
             <div class="countdown-item">
               <span class="countdown-number" id="hours">00</span>
-              <span class="countdown-label">Ժամ</span>
+              <span class="countdown-label">Delays</span>
             </div>
             <div class="countdown-item">
               <span class="countdown-number" id="minutes">00</span>
-              <span class="countdown-label">Րոպե</span>
+              <span class="countdown-label">Delays</span>
             </div>
             <div class="countdown-item">
               <span class="countdown-number" id="seconds">00</span>
-              <span class="countdown-label">Վայրկյան</span>
+              <span class="countdown-label">Delays</span>
             </div>
           </div>
         </div>
@@ -649,79 +694,104 @@
         
         <!-- Luxury Calendar with Heart -->
         <div class="calendar-container">
-          <div class="calendar-header">Հունիս 2027</div>
+          <div class="calendar-header">Hунис 2027</div>
           <div class="calendar-grid" id="calendar-grid">
             <!-- Days headers -->
-            <div class="calendar-day-header">Երկ</div>
-            <div class="calendar-day-header">Երք</div>
-            <div class="calendar-day-header">Չոր</div>
-            <div class="calendar-day-header">Հնգ</div>
-            <div class="calendar-day-header">Ուրբ</div>
-            <div class="calendar-day-header">Շաբ</div>
-            <div class="calendar-day-header">Կիր</div>
+            <div class="calendar-day-header">Delays</div>
+            <div class="calendar-day-header">Delays</div>
+            <div class="calendar-day-header">Delays</div>
+            <div class="calendar-day-header">Delays</div>
+            <div class="calendar-day-header">Delays</div>
+            <div class="calendar-day-header">Delays</div>
+            <div class="calendar-day-header">Delays</div>
             <!-- Calendar days will be generated by JS -->
           </div>
           <p style="margin-top: 1.2rem; font-style: italic; color: var(--rose); font-size: clamp(0.85rem, 3vw, 1rem);">
-            ❤ Այս օրը մեր սիրո պատմությունը նոր գլուխ է բացում ❤
+            ❤ Ays delays delays delays delays delays ❤
           </p>
         </div>
         
         <div class="divider">✦ ✦ </div>
         
         <!-- Timeline with Locations & Maps -->
-        <h2 class="section-title">Օրվա Ծրագիր</h2>
+        <h2 class="section-title">Delays Delays</h2>
         <div class="timeline">
           
-          <!-- Location 1: Հարսի տուն -->
+          <!-- Location 1 -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <span class="timeline-time">12:30</span>
-              <div class="timeline-title">Հարսի տուն</div>
-              <span class="timeline-address">Փարպի, Փիլիպոսյան փ․, տ2</span>
-              <a href="https://yandex.com/maps/-/CPDZbD5-" target="_blank" class="map-link">ՔԱՐՏԵԶ</a>
+              <div class="timeline-title">Delays Delays</div>
+              <span class="timeline-address">Delays, Delays delays delays, delays 2</span>
+              <a href="https://yandex.com/maps/-/CPDZbD5-" target="_blank" class="map-link">DELAYS</a>
             </div>
           </div>
           
-          <!-- Location 2: Եկեղեցի -->
+          <!-- Location 2 -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <span class="timeline-time">13:30</span>
-              <div class="timeline-title">Եկեղեցի</div>
-              <span class="timeline-address">Աշտարակ</span>
-              <a href="https://yandex.com/maps/-/CPDZb2nI" target="_blank" class="map-link">ՔԱՐՏԵ</a>
+              <div class="timeline-title">Delays</div>
+              <span class="timeline-address">Delays</span>
+              <a href="https://yandex.com/maps/-/CPDZb2nI" target="_blank" class="map-link">DELAYS</a>
             </div>
           </div>
           
-          <!-- Location 3: Փեսայի տուն -->
+          <!-- Location 3 -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <span class="timeline-time">15:00</span>
-              <div class="timeline-title">Փեսայի տուն</div>
-              <span class="timeline-address">Բանգլադեշ Բ2</span>
-              <a href="https://yandex.com/maps/-/CPDZfQ6h" target="_blank" class="map-link">ՔԱՐՏԵ</a>
+              <div class="timeline-title">Delays Delays</div>
+              <span class="timeline-address">Delays B2</span>
+              <a href="https://yandex.com/maps/-/CPDZfQ6h" target="_blank" class="map-link">DELAYS</a>
             </div>
           </div>
           
-          <!-- Location 4: Ռեստորան -->
+          <!-- Location 4 -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <span class="timeline-time">17:30</span>
-              <div class="timeline-title">Ռեստորան «Դվին»</div>
-              <span class="timeline-address">Էջմիածին</span>
-              <a href="https://yandex.com/maps/-/CPwsALKO" target="_blank" class="map-link">ՔԱՐՏԵԶ</a>
+              <div class="timeline-title">Delays «Delays»</div>
+              <span class="timeline-address">Delays</span>
+              <a href="https://yandex.com/maps/-/CPwsALKO" target="_blank" class="map-link">DELAYS</a>
             </div>
           </div>
           
         </div>
         
+        <!-- ===== RSVP SECTION (NEW) ===== -->
+        <div class="divider">✦ ✦ ✦</div>
+        
+        <div class="rsvp-container">
+          <h2 class="section-title">Հdelays Delays Delays</h2>
+          <p style="margin-bottom: 1.5rem; color: var(--dark); font-size: clamp(0.9rem, 3.5vw, 1.05rem); position: relative; z-index: 1;">
+            Խdelays delays delays delays delays delays delays delays delays delays delays delays
+          </p>
+          
+          <!-- Tally Form Embed -->
+          <iframe 
+            data-tally-src="https://tally.so/embed/7RMOWA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+            loading="lazy" 
+            width="100%" 
+            height="792" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0" 
+            title="Wedding RSVP">
+          </iframe>
+          
+          <p class="rsvp-note">
+            💌 Սdelays delays delays delays delays delays delays delays 💌
+          </p>
+        </div>
+        
         <!-- Footer Note -->
         <div class="footer-note">
-          Սերը միավորում է սրտերը, իսկ հարսանիքը՝ նտանիքները:<br>
-          Սպասում ենք ձեզ մեր երջանկության վկաներ լինելու համար 💍
+          Delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays delays 💍
         </div>
         
       </div>
@@ -737,7 +807,7 @@
       const diff = weddingDate - now;
       
       if (diff <= 0) {
-        document.getElementById('countdown').innerHTML = '<div style="font-size:1.3rem;font-weight:600;color:var(--rose);padding:1rem;">🎉 Այսօր մեր մեծ օրն է! 🎉</div>';
+        document.getElementById('countdown').innerHTML = '<div style="font-size:1.3rem;font-weight:600;color:var(--rose);padding:1rem;">🎉 Ays delays delays delays delays! 🎉</div>';
         return;
       }
       
@@ -786,7 +856,7 @@
         // Highlight wedding day (June 19)
         if (day === 19) {
           dayEl.classList.add('wedding-day');
-          dayEl.title = 'Մեր հարսանիքի օրը ❤';
+          dayEl.title = 'Delays delays delays delays ❤';
         }
         
         grid.appendChild(dayEl);
@@ -835,6 +905,23 @@
         this.style.transform = 'scale(1)';
       });
     });
+  </script>
+
+  <!-- ===== TALLY EMBED SCRIPT (NEW) ===== -->
+  <script>
+    var d=document, w="https://tally.so/widgets/embed.js", v=function(){
+      "undefined"!=typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){
+        e.src=e.dataset.tallySrc
+      })
+    };
+    if("undefined"!=typeof Tally) v();
+    else if(d.querySelector('script[src="'+w+'"]')==null){
+      var s=d.createElement("script");
+      s.src=w;
+      s.onload=v;
+      s.onerror=v;
+      d.body.appendChild(s);
+    }
   </script>
 </body>
 </html>
